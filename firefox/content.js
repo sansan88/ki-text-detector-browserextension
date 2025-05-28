@@ -1,3 +1,10 @@
+// 1. Entferne vorherige Hervorhebungen
+document.querySelectorAll("span.highlight-em").forEach(span => {
+  const parent = span.parentNode;
+  parent.replaceChild(document.createTextNode(span.textContent), span);
+});
+
+// 2. Suche erneut durch die Seite
 const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
 const nodes = [];
 const matches = [];
@@ -7,19 +14,41 @@ while (walk.nextNode()) {
 }
 
 for (const node of nodes) {
-  if (node.nodeValue.includes("—")) {
-    const span = document.createElement("span");
-    span.innerHTML = node.nodeValue.replace(/—/g, '<span style="background:yellow;font-weight:bold;">—</span>');
-    node.parentNode.replaceChild(span, node);
+  const originalText = node.nodeValue;
+  let modified = false;
 
-    const text = node.nodeValue;
-    const excerpt = text.length > 80 ? text.slice(0, 77) + "…" : text;
-    matches.push(excerpt);
+  let updatedText = originalText;
+
+  // Em Dash
+  if (updatedText.includes("—")) {
+    updatedText = updatedText.replace(/—/g, '<span class="highlight-em" style="background:yellow;font-weight:bold;">—</span>');
+    matches.push(`EM-DASH: ${originalText}`);
+    modified = true;
+  }
+
+  // Narrow NBSP
+  if (updatedText.includes(" ")) {
+    updatedText = updatedText.replace(/\u202F/g, '<span class="highlight-em" style="background:orange;font-weight:bold;"> </span>');
+    matches.push(`NARROW NBSP: ${originalText}`);
+    modified = true;
+  }
+
+  // NBSP
+  if (updatedText.includes(" ")) {
+    updatedText = updatedText.replace(/\u00A0/g, '<span class="highlight-em" style="background:red;font-weight:bold;"> </span>');
+    matches.push(`NBSP: ${originalText}`);
+    modified = true;
+  }
+
+  if (modified) {
+    const span = document.createElement("span");
+    span.innerHTML = updatedText;
+    node.parentNode.replaceChild(span, node);
   }
 }
 
 if (matches.length > 0) {
-  alert(`Gefundene Em Dashes: ${matches.length}\n\n` + matches.join("\n\n"));
+  alert(`Gefundene Sonderzeichen: ${matches.length}\n\n` + matches.join("\n\n"));
 } else {
-  alert("Keine Em Dashes gefunden.");
+  alert("Keine Em Dashes oder Sonder-Leerzeichen gefunden.");
 }

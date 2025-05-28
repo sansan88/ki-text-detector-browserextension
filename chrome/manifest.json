@@ -1,13 +1,26 @@
 {
-    "manifest_version": 3,
-    "name": "Em Dash Highlighter",
-    "version": "1.0",
-    "description": "Highlights all em dashes (—) on the current page.",
-    "permissions": ["scripting", "activeTab"],
-    "action": {
-      "default_title": "Highlight Em Dashes"
-    },
-    "background": {
-      "service_worker": "background.js"
+  "manifest_version": 3,
+  "name": "KI-Text-Detector",
+  "version": "1.0",
+  "description": "Detects all text on the current page by searching for EM-Dashes.",
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "action": {
+    "default_title": "KI-Text-Detector",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   }
+}

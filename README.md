@@ -34,6 +34,10 @@ ki-text-detector-browserextension/
 ├── chrome/
 │   ├── manifest.json
 │   └── background.js
+│   └── icons/
+│       ├── icon16.png
+│       ├── icon48.png
+│       └── icon128.png
 ├── firefox/
 │   ├── manifest.json
 │   ├── background.js

@@ -1,15 +1,26 @@
 # KI-Text-Detector Browser Extension
 
-This extension detects special characters and spaces on the current web page by highlighting them with different colors, making it easy to visually identify them.
+Diese Browser-Erweiterung erkennt Sonderzeichen und spezielle Leerzeichen auf der aktuellen Webseite, indem sie diese mit verschiedenen Farben hervorhebt. Dies macht es einfach, sie visuell zu identifizieren.
 
-## ✨ Features
+## ✨ Funktionen
 
-- Highlights different types of special characters and spaces:
-  - **Em dashes (—)** in yellow
-  - **Narrow non-breaking spaces ( )** in orange
-  - **Non-breaking spaces ( )** in red
-- Displays an alert with text excerpts where special characters were found
-- Works in both **Google Chrome** and **Mozilla Firefox**
+- Hebt verschiedene Arten von Sonderzeichen und Leerzeichen hervor:
+  - **Em-Dashes (—)** in gelb
+  - **Schmale geschützte Leerzeichen ( )** in orange
+  - **Geschützte Leerzeichen ( )** in rot
+  - **Weiche Trennstriche (­)** in rot
+- Zeigt einen Alert mit Textauszügen an, in denen Sonderzeichen gefunden wurden
+- Funktioniert sowohl in **Google Chrome** als auch in **Mozilla Firefox**
+
+## 🔍 Wie es funktioniert
+
+Die Erweiterung durchsucht den gesamten Text der Webseite nach:
+- Em-Dashes (Unicode: \u2014)
+- Schmale geschützte Leerzeichen (Unicode: \u202F)
+- Geschützte Leerzeichen (Unicode: \u00A0)
+- Weiche Trennstriche (Unicode: \u00AD)
+
+Gefundene Zeichen werden farblich hervorgehoben und in einer Übersicht aufgelistet.
 
 ---
 
@@ -17,20 +28,20 @@ This extension detects special characters and spaces on the current web page by 
 
 ### 🔵 Google Chrome
 
-1. Open `chrome://extensions/` in Chrome.
-2. Enable **Developer mode** (top right).
-3. Click **"Load unpacked"**.
-4. Select the folder `chrome`.
+1. Öffnen Sie `chrome://extensions/` in Chrome
+2. Aktivieren Sie den **Entwicklermodus** (oben rechts)
+3. Klicken Sie auf **"Entpackte Erweiterung laden"**
+4. Wählen Sie den Ordner `chrome` aus
 
 ### 🟠 Mozilla Firefox
 
-1. Open `about:debugging#/runtime/this-firefox` in Firefox.
-2. Click **"Load Temporary Add-on..."**
-3. Select the `manifest.json` file inside `firefox`.
+1. Öffnen Sie `about:debugging#/runtime/this-firefox` in Firefox
+2. Klicken Sie auf **"Temporäres Add-on laden..."**
+3. Wählen Sie die `manifest.json`-Datei im Ordner `firefox` aus
 
 ---
 
-## 📁 Folder Structure
+## 📁 Ordnerstruktur
 
 ```
 ki-text-detector-browserextension/
@@ -51,6 +62,6 @@ ki-text-detector-browserextension/
 │       └── icon128.png
 ```
 
-## 📝 License
+## 📝 Lizenz
 
-MIT – Free to use, modify, and share.
+MIT – Frei zur Verwendung, Modifikation und Weitergabe.

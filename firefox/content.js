@@ -19,24 +19,31 @@ for (const node of nodes) {
 
   let updatedText = originalText;
 
-  // Em Dash
+  // Em Dash (Unicode \u2014)
   if (updatedText.includes("—")) {
-    updatedText = updatedText.replace(/—/g, '<span class="highlight-em" style="background:yellow;font-weight:bold;">—</span>');
+    updatedText = updatedText.replace(/\u2014/g, '<span class="highlight-em" style="background:yellow;font-weight:bold;">—</span>');
     matches.push(`EM-DASH: ${originalText}`);
     modified = true;
   }
 
-  // Narrow NBSP
+  // Narrow No-Break Space
   if (updatedText.includes(" ")) {
     updatedText = updatedText.replace(/\u202F/g, '<span class="highlight-em" style="background:orange;font-weight:bold;"> </span>');
-    matches.push(`NARROW NBSP: ${originalText}`);
+    matches.push(`Narrow No-Break Space: ${originalText}`);
     modified = true;
   }
 
-  // NBSP
-  if (updatedText.includes(" ")) {
-    updatedText = updatedText.replace(/\u00A0/g, '<span class="highlight-em" style="background:red;font-weight:bold;"> </span>');
-    matches.push(`NBSP: ${originalText}`);
+  // No-Break Space (NBSP)
+  if (updatedText.includes(" ")) {
+    updatedText = updatedText.replace(/\u00A0/g, '<span class="highlight-em" style="background:red;font-weight:bold;"> </span>');
+    matches.push(`No-Break Space (NBSP): ${originalText}`);
+    modified = true;
+  }
+
+  // Soft Hyphen
+  if (updatedText.includes("\u00AD")) {
+    updatedText = updatedText.replace(/\u00AD/g, '<span class="highlight-em" style="background:red;font-weight:bold;">\u00AD</span>');
+    matches.push(`Soft Hyphen: ${originalText}`);
     modified = true;
   }
 

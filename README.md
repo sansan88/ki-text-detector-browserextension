@@ -1,11 +1,14 @@
 # KI-Text-Detector Browser Extension
 
-This extension detects all **em dashes (—)** on the current web page by wrapping them in a yellow `span`, making it easy to visually identify them.
+This extension detects special characters and spaces on the current web page by highlighting them with different colors, making it easy to visually identify them.
 
 ## ✨ Features
 
-- Highlights all **em dashes (—)** in yellow on any page
-- Displays an alert with text excerpts where em dashes were found
+- Highlights different types of special characters and spaces:
+  - **Em dashes (—)** in yellow
+  - **Narrow non-breaking spaces ( )** in orange
+  - **Non-breaking spaces ( )** in red
+- Displays an alert with text excerpts where special characters were found
 - Works in both **Google Chrome** and **Mozilla Firefox**
 
 ---
@@ -33,7 +36,7 @@ This extension detects all **em dashes (—)** on the current web page by wrappi
 ki-text-detector-browserextension/
 ├── chrome/
 │   ├── manifest.json
-│   └── background.js
+│   ├── background.js
 │   └── icons/
 │       ├── icon16.png
 │       ├── icon48.png

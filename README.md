@@ -1,6 +1,6 @@
-# Em Dash Highlighter Browser Extension
+# KI-Text-Detector Browser Extension
 
-This extension highlights all **em dashes (—)** on the current web page by wrapping them in a yellow `span`, making it easy to visually identify them.
+This extension detects all **em dashes (—)** on the current web page by wrapping them in a yellow `span`, making it easy to visually identify them.
 
 ## ✨ Features
 
@@ -30,14 +30,18 @@ This extension highlights all **em dashes (—)** on the current web page by wra
 ## 📁 Folder Structure
 
 ```
-em-dash-highlighter/
+ki-text-detector-browserextension/
 ├── chrome/
 │   ├── manifest.json
 │   └── background.js
 ├── firefox/
 │   ├── manifest.json
 │   ├── background.js
-│   └── content.js
+│   ├── content.js
+│   └── icons/
+│       ├── icon16.png
+│       ├── icon48.png
+│       └── icon128.png
 ```
 
 ## 📝 License
